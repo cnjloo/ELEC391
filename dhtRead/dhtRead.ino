@@ -1,7 +1,8 @@
 // Example testing sketch for various DHT humidity/temperature sensors
 // Written by ladyada, public domain
 
-#include "DHT.h"
+#include <DHT.h>
+#include <Adafruit_Sensor.h>
 
 #define DHTPIN 2     // what digital pin we're connected to
 
@@ -67,3 +68,4 @@ void loop() {
   Serial.print(hif);
   Serial.println(" *F");
 }
+
