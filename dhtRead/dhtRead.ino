@@ -24,14 +24,16 @@
 // as the current DHT reading algorithm adjusts itself to work on faster procs.
 DHT dht(DHTPIN, DHTTYPE);
 
-void setup() {
+volatile float sensorData[6];
+
+void dhtSetup() {
   Serial.begin(9600);
   Serial.println("DHTxx test!");
 
   dht.begin();
 }
 
-void loop() {
+void dhtRead() {
   // Wait a few seconds between measurements.
   delay(2000);
 
@@ -53,6 +55,12 @@ void loop() {
   float hif = dht.computeHeatIndex(f, h);
   // Compute heat index in Celsius (isFahreheit = false)
   float hic = dht.computeHeatIndex(t, h, false);
+
+  sensorData[0] = h;
+  sensorData[1] = t;
+  sensorData[2] = f;
+  sensorData[3] = hic;
+  sensorData[4] = hif;
 
   Serial.print("Humidity: ");
   Serial.print(h);

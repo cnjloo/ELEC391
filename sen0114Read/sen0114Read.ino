@@ -9,18 +9,17 @@
   # 0  ~300     dry soil
   # 300~700     humid soil
   # 700~950     in water
+
+  Line 3 modified by Candice Loo, ELEC 391 group 5
 */
 
-void setup(){
-  
-  Serial.begin(57600);
-  
-}
+volatile int sm = 0;
 
-void loop(){
-  
+int sen0114Read(){
+
+  return sm = analogRead(A0);
   Serial.print("Moisture Sensor Value:");
-  Serial.println(analogRead(A0));  
+  Serial.println(sm);  
   delay(100);
   
 }
